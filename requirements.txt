@@ -8,3 +8,4 @@ sentence_transformers
 gpt4all
 openai
 django
+pip==23.3

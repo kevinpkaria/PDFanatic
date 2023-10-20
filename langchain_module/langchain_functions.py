@@ -11,7 +11,7 @@ import pickle
 from PyPDF2 import PdfReader
 import os
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = ""
 
 def process_pdf_and_get_answer(pdf_file_path, question):
     pdf_reader = PdfReader(pdf_file_path)
