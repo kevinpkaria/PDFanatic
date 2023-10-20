@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDFanatic</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      /* Importing Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500&display=swap");
+
+      /* Universal Properties */
+      html {
+        background-color: #432b55;
+        scrollbar-width: none;
+      }
+
+      /* Background Properties */
+      .bg {
+        position: fixed;
+        opacity: 0.15;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        z-index: -1;
+      }
+
+      /* Navbar Properties */
+      nav {
+        position: fixed;
+        top: 10px;
+        width: 99%;
+        text-align: left;
+        padding-bottom: 15px;
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 10px;
+      }
+
+      nav .navbar_elements {
+        align-self: start;
+        text-align: start;
+        display: inline-block;
+        position: static;
+        font-style: normal;
+        text-transform: none;
+        text-decoration: none;
+        color: #d2aeff;
+        font-size: 30px;
+        padding: 0px 20px;
+        font-family: "Josefin Sans", sans-serif;
+        font-weight: 300;
+        margin-top: 20px;
+      }
+
+      nav .navbar_elements:hover {
+        color: #ffffff;
+      }
+
+      nav .navbar_button {
+        font-size: 25px;
+        font-family: "Josefin Sans", sans-serif;
+        margin: 15px 15px 8px 0px;
+        color: #000000;
+        text-align: start;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-right: 25px;
+        padding-left: 20px;
+        border: 3px solid #7b4f99;
+        background-color: #d0affa;
+        position: absolute;
+        right: 0px;
+        cursor: pointer;
+      }
+
+      nav .navbar_button:hover {
+        color: #d2aeff;
+        background-color: #432b55;
+        border: 3px solid #d2aeff;
+      }
+
+      form {
+        position: absolute;
+        top: 32.5%;
+        left: 30%;
+        background-color: rgba(0, 0, 0, 0.25); /* Dark gray form background */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(20px);
+        width: 40%;
+        text-align: center;
+        color: #d2aeff;
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 20px;
+      }
+
+      .file-drop-zone {
+        border: 2px dashed #7b4f99; /* Light purple border for the drop zone */
+        padding: 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #d0affa;
+        color: #7b4f99;
+      }
+
+      .file-drop-zone:hover {
+        color: #d2aeff;
+        background-color: #432b55;
+        border: 2px dashed #d2aeff;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="bg" id="bg"></div>
+    <nav>
+      <a href="{% url 'upload_pdf' %}" class="navbar_elements"> PDFanatic</a>
+      <a
+        href="https://www.bit.ly/42hWQf2"
+        class="navbar_element"
+        target="https://bio.link/kevinpkaria">
+        <button class="navbar_elements navbar_button">About the Dev</button>
+      </a>
+    </nav>
+
+    <div class="home">
+      <form id="upload-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div
+          class="file-drop-zone"
+          onclick="document.getElementById('file-input').click()"
+        >
+          <p>Drag and drop a PDF file here</p>
+          <p>or</p>
+          <label for="file-input" class="button">Browse</label>
+          <input
+            type="file"
+            id="file-input"
+            name="pdf_file"
+            accept=".pdf"
+            onchange="document.getElementById('upload-form').submit()"
+          />
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
+  <script>
+    VANTA.TRUNK({
+  el: "#bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x7b4f99,
+  spacing: 10.00,
+  chaos: 7
+});
+  </script>
+</html>

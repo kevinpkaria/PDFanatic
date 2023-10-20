@@ -1,0 +1,10 @@
+langchain
+pyPDF2
+python-dotenv
+streamlit
+faiss-cpu
+streamlit-extras
+sentence_transformers
+gpt4all
+openai
+django
